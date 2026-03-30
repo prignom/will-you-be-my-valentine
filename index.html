@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine?</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <img 
+        src="heart-envelop.png" 
+        alt="Valentine envelope with hearts" 
+        class="envelope-image"
+      />
+      <h1 class="valentine-text">Will You Be My Valentine?!</h1>
+    </div>
+    
+    <div class="button-group">
+      <button class="btn" id="yes"><a href="main.html" target="_blank" rel="noopener noreferrer">YES</a></button>
+      <div class="no-btn">
+      <button class="btn" id="no">NO</button>
+      </div>
+      <script>
+    const btn = document.getElementById("no");
+
+    // List of texts to cycle through
+    const texts = [
+        {text: "Are you sure?😏", width: "120px"}, 
+        {text: "You’re making me chase you!", width: "220px"}, 
+        {text: "Soch lo phirse...", width: "120px"}, 
+        {text: "You can’t escape love💘", width: "170px"}, 
+        {text: "But I’m sweet!", width: "110px"}, 
+        {text: "Don’t run away😘", width: "120px"}
+        ];
+    let index = 0;
+
+    btn.addEventListener("click", () => {
+        // Change text and background
+      btn.textContent = texts[index].text;
+      btn.style.width = texts[index].width;
+
+      index = (index + 1) % texts.length;
+
+
+
+      
+      // Get viewport size
+      const maxX = window.innerWidth - btn.offsetWidth;
+      const maxY = window.innerHeight - btn.offsetHeight;
+
+      // Generate random position inside viewport
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+
+      // Move the button
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    });
+  </script>
+
+
+
+    </div>
+  </div>
+</body>
+</html>

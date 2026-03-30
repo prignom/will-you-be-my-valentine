@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pookie - Valentine's Day Card</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; */
+            background-color: #FFDBDB;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* Main Container */
+        .valentine-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Decorative Hearts Container */
+        .decorative-hearts {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            display: block;
+        }
+
+        .heart img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Individual Heart Positions and Styles */
+        .heart-1 {
+            top: clamp(2rem, 12vh, 7rem);
+            right: clamp(1.5rem, 10vw, 5rem);
+            width: clamp(75px, 13vw, 111px);
+            transform: rotate(19deg);
+            filter: drop-shadow(-2px 2px 5.1px rgba(0, 0, 0, 0.25));
+        }
+
+        .heart-2 {
+            top: clamp(2rem, 12vh, 7rem);
+            left: clamp(1.5rem, 10vw, 5rem);
+            width: clamp(75px, 13vw, 111px);
+            transform: rotate(-161deg);
+            filter: drop-shadow(-2px 2px 5.1px rgba(0, 0, 0, 0.25));
+        }
+
+        .heart-3 {
+            bottom: clamp(2rem, 12vh, 7rem);
+            right: clamp(1.5rem, 10vw, 5rem);
+            width: clamp(75px, 13vw, 111px);
+            transform: rotate(43deg);
+            filter: drop-shadow(-3px -1px 5px rgba(0, 0, 0, 0.25));
+        }
+
+        .heart-4 {
+            bottom: clamp(2rem, 12vh, 7rem);
+            left: clamp(1.5rem, 10vw, 5rem);
+            width: clamp(75px, 13vw, 111px);
+            transform: rotate(-137deg);
+            filter: drop-shadow(-3px -1px 5px rgba(0, 0, 0, 0.25));
+        }
+
+        /* Main Card Content */
+        .card-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .gift-card {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gift-image {
+            width: 300px;
+            /* height: 247px; */
+            aspect-ratio: 1/1;
+            display: block;
+            filter: drop-shadow(9px 13px 25px rgba(0, 0, 0, 0.15));
+            max-width: 100%;
+        }
+
+        /* Text Overlay Positioned on Gift */
+        .gift-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            text-align: center;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .gift-text h1 {
+              position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFF;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36px;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  pointer-events: none;
+        }
+        
+        .gift-text h2 {
+              position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 55%);
+  color: #FFF;
+  text-align: center;
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  pointer-events: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .valentine-wrapper {
+                min-height: 500px;
+            }
+
+            .decorative-hearts .heart {
+                opacity: 0.95;
+            }
+
+            /* .gift-text h1 {
+                font-size: clamp(1rem, 4.5vw, 1.75rem);
+                margin-bottom: 0.15rem;
+            } */
+
+            /* .gift-text h2 {
+                font-size: clamp(1.5rem, 7vw, 3rem);
+            } */
+
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.75rem;
+            }
+
+            .valentine-wrapper {
+                min-height: 400px;
+            }
+
+            .heart-1,
+            .heart-2,
+            .heart-3,
+            .heart-4 {
+                width: clamp(55px, 11vw, 90px);
+            }
+
+            .gift-image {
+                width: 160px;
+            }
+
+            .gift-text h1 {
+              position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFF;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  pointer-events: none;
+        }
+            
+            .gift-text h2 {
+              position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 55%);
+  color: #FFF;
+  text-align: center;
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  pointer-events: none;
+        }
+            
+
+            /* .gift-text h1 {
+                font-size: clamp(0.875rem, 4vw, 1.5rem);
+            } */
+
+            /* .gift-text h2 {
+                font-size: clamp(1.25rem, 6.5vw, 2.25rem);
+            } */
+        }
+
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .heart-1,
+            .heart-2,
+            .heart-3,
+            .heart-4 {
+                width: clamp(45px, 10vw, 75px);
+            }
+
+            /* .gift-text {
+                width: 85%;
+            } */
+        }
+
+        /* Landscape orientation adjustments */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .valentine-wrapper {
+                min-height: auto;
+                padding: 1rem 0;
+            }
+
+            .heart-1,
+            .heart-2 {
+                top: 1.5rem;
+            }
+
+            .heart-3,
+            .heart-4 {
+                bottom: 1.5rem;
+            }
+
+            body {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Large desktop screens */
+        @media (min-width: 1440px) {
+            .valentine-wrapper {
+                min-height: 700px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Hearts Background -->
+    <div class="decorative-hearts">
+        <!-- Top Right Heart -->
+        <div class="heart heart-1">
+            <img 
+                src="https://api.builder.io/api/v1/image/assets/TEMP/283e5d184fc4b9190f92855398c4a09a27565916?width=222" 
+                alt=""
+                loading="lazy"
+            />
+        </div>
+        
+        <!-- Top Left Heart -->
+        <div class="heart heart-2">
+            <img 
+                src="https://api.builder.io/api/v1/image/assets/TEMP/10e2a7fae027087f31a7541b90ba878f8a88bb5c?width=222" 
+                alt=""
+                loading="lazy"
+            />
+        </div>
+        
+        <!-- Bottom Right Heart -->
+        <div class="heart heart-3">
+            <img 
+                src="https://api.builder.io/api/v1/image/assets/TEMP/6f83e349cb7492a2b1ceb111be53244b2a6b6b88?width=222" 
+                alt=""
+                loading="lazy"
+            />
+        </div>
+        
+        <!-- Bottom Left Heart -->
+        <div class="heart heart-4">
+            <img 
+                src="https://api.builder.io/api/v1/image/assets/TEMP/10e2a7fae027087f31a7541b90ba878f8a88bb5c?width=222" 
+                alt=""
+                loading="lazy"
+            />
+        </div>
+    </div>
+
+    <!-- Main Valentine Card -->
+    <div class="valentine-wrapper">
+        <div class="card-container">
+            <div class="gift-card">
+                <!-- Main Gift Box Image -->
+                <img 
+                    src="heart-box.png" 
+                    alt="Valentine's Day gift box with ribbon and hearts"
+                    class="gift-image"
+                    loading="eager"
+                />
+                
+                <!-- Overlay Text -->
+                <div class="gift-text">
+                    <h1>Can't Wait you to See..</h1>
+                    <h2>My POOKIE</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
